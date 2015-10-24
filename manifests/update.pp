@@ -11,7 +11,6 @@
 class googlechrome::update() {
   case $::osfamily {
     'Debian': {
-      class { 'apt::update': }
     }
     'RedHat': {
     }

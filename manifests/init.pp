@@ -99,11 +99,10 @@ class googlechrome(
 
   class { 'googlechrome::update':
     require => Class['googlechrome:repo'],
-    depends => Class['apt::update']
   }
 
   package { $package_real:
     ensure  => $version_real,
-    require => Class['googlechrome::update'],
+    require => [Class['googlechrome::update'],Class['apt::update']],
   }
 }

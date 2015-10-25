@@ -97,12 +97,8 @@ class googlechrome(
     enabled    => $repo_enabled_real,
   }
 
-  class { 'googlechrome::update':
-    require => Class['googlechrome:repo'],
-  }
-
   package { $package_real:
     ensure  => $version_real,
-    require => [Class['googlechrome::update'],Class['apt::update']],
+    require => [Class['googlechrome::repo'], Class['apt::update']],
   }
 }
